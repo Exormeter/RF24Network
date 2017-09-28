@@ -212,7 +212,7 @@ uint8_t RF24Network::update(void)
 					continue;
 				}
       }
-      if(header->type == NETWORR_ADDR_NODE_RESPONSE){
+      if(header->type == NETWORK_ADDR_NODE_RESPONSE){
         uint16_t requester = 04444;
         if(requester != node_address){
           header->to_node = requester;
