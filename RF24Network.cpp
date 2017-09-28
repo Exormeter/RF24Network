@@ -201,17 +201,28 @@ uint8_t RF24Network::update(void)
 			if(header->type == NETWORK_PING){
 			   continue;
 			}
-		    if(header->type == NETWORK_ADDR_RESPONSE ){	
-			    uint16_t requester = 04444;
+		  if(header->type == NETWORK_ADDR_RESPONSE ){	
+			  uint16_t requester = 04444;
 				if(requester != node_address){
 					header->to_node = requester;
 					write(header->to_node,USER_TX_TO_PHYSICAL_ADDRESS);
 					delay(10);
-                    write(header->to_node,USER_TX_TO_PHYSICAL_ADDRESS);
+          write(header->to_node,USER_TX_TO_PHYSICAL_ADDRESS);
 					//printf("Fwd add response to 0%o\n",requester);
 					continue;
 				}
-			}
+      }
+      if(header->type == NETWORR_ADDR_NODE_RESPONSE){
+        uint16_t requester = 04444;
+        if(requester != node_address){
+          header->to_node = requester;
+          write(header->to_node,USER_TX_TO_PHYSICAL_ADDRESS);
+          delay(10);
+          write(header->to_node,USER_TX_TO_PHYSICAL_ADDRESS);
+          //printf("Fwd add response to 0%o\n",requester);
+          continue;
+        }
+      }
 			if(header->type == NETWORK_REQ_ADDRESS && node_address){
 				//printf("Fwd add req to 0\n");
 				header->from_node = node_address;

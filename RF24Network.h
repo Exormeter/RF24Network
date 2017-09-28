@@ -78,6 +78,16 @@
 //#define NETWORK_ADDR_CONFIRM 129
 
 /**
+*A NETWORK_ADDR_NODE_RESPONSE type works like NETWORK_ADDR_RESPONSE with the difference that in addition a free NodeID will
+*be transmitted
+*
+*
+*
+*Used by RF24Mesh
+*
+*/
+#define NETWORK_ADDR_NODE_RESPONSE 199
+/**
 * Messages of type NETWORK_PING will be dropped automatically by the recipient. A NETWORK_ACK or automatic radio-ack will indicate to the sender whether the 
 * payload was successful. The time it takes to successfully send a NETWORK_PING is the round-trip-time.
 */
